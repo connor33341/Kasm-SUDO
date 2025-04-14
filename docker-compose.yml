@@ -1,0 +1,17 @@
+version: '3'
+services:
+  kasm:
+    image: kasmweb/custom-ubuntu:latest
+    container_name: kasm
+    ports:
+      - "443:443"
+      - "6901:6901"
+      - "4902:4902"
+    volumes:
+      - kasm_data:/opt
+    shm_size: '512m'
+    environment:
+      - VNC_PW=password
+    restart: unless-stopped
+volumes:
+  kasm_data:
